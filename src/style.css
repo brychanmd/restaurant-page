@@ -20,13 +20,19 @@ h3, p {
     margin: auto;
 }
 
-header {
+header,
+footer {
     background-color: #ED1C24;
     padding: 1rem;
     color: #FFFFFF;
 }
 
-header .container {
+article {
+    padding: 1rem;
+}
+
+header .container,
+footer .container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -59,10 +65,20 @@ button.active {
     flex-direction: row;
     flex-wrap: wrap;
 }
-.image-text * {
-    flex: 1;
+.img-wrapper {
+    margin: 1rem 0;
 }
+@media screen and (min-width: 600px) {
+    .image-text .shrink {
+        flex: 1;
+    }
+    .img-wrapper {
+        margin-left: 1rem;
+    }
+}
+
 .img-wrapper img {
     width: 100%;
     height: auto;
+
 }
