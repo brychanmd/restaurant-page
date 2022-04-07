@@ -20,9 +20,11 @@ const buttons = document.querySelectorAll('.menu-item');
 buttons.forEach( elem => {
     elem.addEventListener('click', (e) => {
 
+        // Remove active class from buttons.  Add to current one.
         buttons.forEach( item => { item.classList.remove("active") });
         e.target.classList.add("active");
 
+        // Replace body section.
         let existing = document.querySelector('article');
         let replacement;
         if ( 'btnMenu' === e.target.id ) {
