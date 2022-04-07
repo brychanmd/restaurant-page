@@ -14,7 +14,7 @@ function header() {
     let menuItemsElements = [];
     let firstIteration = true;
     menuItemsList.forEach( item => {
-        let button = functions.createHtmlElement( 'button', `btn${item}`, firstIteration ? ['active'] : null, item );
+        let button = functions.createHtmlElement( 'button', `btn${item}`, firstIteration ? ['menu-item', 'active'] : ['menu-item'], item );
         menuItemsElements.push(button);
         firstIteration = false;
     } );

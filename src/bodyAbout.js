@@ -2,7 +2,7 @@ import * as functions from './functions.js';
 
 function bodyAbout() {
     // Main body container.
-    const body = functions.createHtmlElement('article', null, ['container'], null);
+    const body = functions.createHtmlElement('article', 'bodyAbout', ['container'], null);
 
     // Subtitle.
     const title = functions.createHtmlElement('h2', null, ['image-text__title'], 'Our story');
@@ -15,7 +15,7 @@ function bodyAbout() {
     const imagewrapper = functions.createHtmlElement('div', null, ['img-wrapper', 'shrink'], null)
     const image = new Image();
     image.src = './images/about-burgers.jpg';
-    functions.nestElements([imagewrapper, image])
+    functions.nestElements([imagewrapper, image]);
 
     // Add items to an image-text div.
     const textImage = functions.createHtmlElement('div', null, ['image-text'], null)

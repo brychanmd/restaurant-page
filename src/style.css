@@ -40,7 +40,7 @@ footer .container {
 
 }
 
-button {
+.menu-item {
     margin-top: 2px;
     background-color: transparent;
     padding: 0;
@@ -50,13 +50,14 @@ button {
     margin-right: 0.5rem;
     color: #FFFFFF;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
-button:hover {
+.menu-item:hover {
     border-color: #FFFFFF;
 }
 
-button.active {
+.menu-item.active {
     border-color: #FFFFFF;
 }
 

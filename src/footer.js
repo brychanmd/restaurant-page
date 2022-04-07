@@ -9,8 +9,10 @@ function footer() {
     const title = functions.createHtmlElement('h2', null, ['title', 'large'], 'Slim\'s Burgers');
 
     // Links.
+    let d = new Date();
+    d = d.getFullYear();
     const footerInfo = functions.createHtmlElement('div', null, ['footer-info'], null);
-    const footerDesc = functions.createHtmlElement('p', null, null, `© 2022 Brychan Morris-Dafydd`);
+    const footerDesc = functions.createHtmlElement('p', null, null, `© ${d} Brychan Morris-Dafydd`);
     functions.appendElements( footerInfo, [footerDesc] );
 
     // Append all the above to the main header container.
