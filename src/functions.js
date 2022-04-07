@@ -49,7 +49,9 @@ function nestElements( elements ) {
  */
 function appendElements( parent, children ) {
 
+    
     children.forEach( element => {
+        console.log(element);
         parent.appendChild( element );
     });
 

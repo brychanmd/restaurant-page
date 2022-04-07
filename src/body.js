@@ -10,6 +10,8 @@ function about() {
     // Paragraph
     let paragraphText = `Brothers Omar (who's childhood nickname was "Slim") and Yunes grew up with a respect for hard work, and an appreciation for the value of fresh ingredients having both spent many hours working in their father's grocery as teenagers. They carried their strong work ethic and the appreciation of fresh food with them and, in 2011, opened pizza place in New Hope, MN. It wasn't long, however, before they decided to expand both menu and venue. In February of 2013, the brothers moved back to their roots and opened Slim's on busy and bustling Brooklyn Boulevard in Brooklyn Center, where it's still about the basics: hard work and fresh food.`;
     const paragraph = functions.createHtmlElement('p', null, ['shrink'], paragraphText)
+    const paragraphWrapper = functions.createHtmlElement('div', null, ['shrink'], null);
+    functions.appendElements(paragraphWrapper, [paragraph]);
 
     // Image.
     const imagewrapper = functions.createHtmlElement('div', null, ['img-wrapper', 'shrink'], null)
@@ -19,7 +21,7 @@ function about() {
 
     // Add items to an image-text div.
     const textImage = functions.createHtmlElement('div', null, ['image-text'], null)
-    functions.appendElements(textImage,[ paragraph, imagewrapper]);
+    functions.appendElements(textImage,[ paragraphWrapper, imagewrapper]);
 
     // Append all to body.
     functions.appendElements(body, [title, textImage]);
@@ -95,19 +97,45 @@ function contact() {
     // Subtitle.
     const title = functions.createHtmlElement('h2', null, ['image-text__title'], 'Contact us');
 
-    // Paragraph
-    let paragraphText = `Something different about CONTACT`;
-    const paragraph = functions.createHtmlElement('p', null, ['shrink'], paragraphText)
+    // Contact details.
+    // Cards.
+    let contactDetails = [
+        {
+            label: 'Phone: ',
+            value: `+44 7781 678 304`,
+        },
+        {
+            label: 'Instagram: ',
+            value: `@slims_burger`,
+        },
+        {
+            label: 'Address: ',
+            value: `1446 Westgate St, CF5 2PQ`,
+        },
+
+    ]
+    let contactElements = [];
+    contactDetails.forEach(element => {
+        let label = functions.createHtmlElement('span', null, ['contact__label'], element.label);
+        let value = functions.createHtmlElement('p', null, null, element.value);
+        value.prepend(label);
+
+        contactElements.push( value );
+    });
+
+    const paragraphWrapper = functions.createHtmlElement('div', null, ['shrink'], null);
+    // console.log(paragraphWrapper);
+    functions.appendElements(paragraphWrapper, contactElements);
 
     // Image.
     const imagewrapper = functions.createHtmlElement('div', null, ['img-wrapper', 'shrink'], null)
     const image = new Image();
-    image.src = './images/about-burgers.jpg';
+    image.src = './images/maps.png';
     functions.nestElements([imagewrapper, image])
 
     // Add items to an image-text div.
     const textImage = functions.createHtmlElement('div', null, ['image-text'], null)
-    functions.appendElements(textImage,[ paragraph, imagewrapper]);
+    functions.appendElements(textImage,[ paragraphWrapper, imagewrapper]);
 
     // Append all to body.
     functions.appendElements(body, [title, textImage]);
