@@ -1,8 +1,6 @@
 import { appendElements } from "./functions.js";
 import header from "./header.js";
-import bodyAbout from "./bodyAbout.js";
-import bodyMenu from "./bodyMenu.js";
-import bodyContact from "./bodyContact.js";
+import * as body from "./body.js";
 import footer from "./footer.js";
 import './style.css';
 
@@ -12,7 +10,7 @@ const content = document.getElementById('content');
 // Initialize homepage on load.
 let sections = [
     header(),
-    bodyAbout(),
+    body.about(),
     footer()
 ];
 appendElements( content, sections );
@@ -21,27 +19,23 @@ appendElements( content, sections );
 const buttons = document.querySelectorAll('.menu-item');
 buttons.forEach( elem => {
     elem.addEventListener('click', (e) => {
-        let existing;
+
+        buttons.forEach( item => { item.classList.remove("active") });
+        e.target.classList.add("active");
+
+        let existing = document.querySelector('article');
         let replacement;
-        switch(e.target.id) {
-            case 'btnMenu':
-                existing = document.querySelector('article');
-                replacement = bodyMenu();
-                content.replaceChild( replacement, existing );
-                break;
-            case 'btnContact':
-                existing = document.querySelector('article');
-                replacement = bodyContact();
-                content.replaceChild( replacement, existing );
-                break;
-            case 'btnAbout':
-                existing = document.querySelector('article');
-                replacement = bodyAbout();
-                content.replaceChild( replacement, existing );
-                break;
-            default:
-                console.log('oops something went wrong!');
-    
+        if ( 'btnMenu' === e.target.id ) {
+            replacement = body.menu();
+            content.replaceChild( replacement, existing );
+        } else if ('btnContact' === e.target.id ) {
+            replacement = body.contact();
+            content.replaceChild( replacement, existing );
+        } else if ('btnAbout' === e.target.id ) {
+            replacement = body.about();
+            content.replaceChild( replacement, existing );
+        } else {
+            console.log('Oops something went wrong...');
         }
     });
 })
